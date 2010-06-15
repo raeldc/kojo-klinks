@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<menu name="Kojo Weblinks" msg="An Example Component written in Kojo Framework">
+		<options name="Kojo Options" msg="this is set of option" var="view">
+			<option name="List All Web Link Categories " msg="" value="categories" />
+			<option name="List Web Links in a Category" msg="" value="category"/>
+			<option name="Submit or Edit a Web Link" msg="" value="submit"/>
+		</options>
+	</menu>
+</metadata>
