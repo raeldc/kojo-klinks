@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="1.6.0" method="upgrade">
-	<name>Kojo WebLinks</name>
+	<name>KLinks</name>
 	<author>Israel D. Canasa</author>
 	<creationDate>June 2010</creationDate>
 	<copyright>Israel D. Canasa
@@ -24,9 +24,14 @@
 		<folder>config</folder>
 		<folder>cache</folder>
 	</files>
-	<files folder="admin">
-		<filename>index.html</filename>
-		<filename>config.xml</filename>
-	</files>
+	<administration>
+		<menu img="class:weblinks">KoJo - KLinks</menu>
+		
+		<files folder="admin">
+			<filename>index.html</filename>
+			<filename>klinks.php</filename>
+			<filename>config.xml</filename>
+		</files>
+	</administration>
 </extension>
 
