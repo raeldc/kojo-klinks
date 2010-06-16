@@ -1,7 +1,6 @@
 <?php defined('_JEXEC') or die;
 
-JFactory::getApplication()->triggerEvent('InitializeKojo', JPATH_COMPONENT_SITE);
-
+(JFactory::getApplication()->triggerEvent('InitializeKoJo', JPATH_COMPONENT)) or die('Please install or enable the KoJo Framework Plugin');
 /**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.

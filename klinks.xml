@@ -19,10 +19,6 @@
 		<filename>metadata.xml</filename>
 		<folder>classes</folder>
 		<folder>views</folder>
-		<folder>messages</folder>
-		<folder>logs</folder>
-		<folder>config</folder>
-		<folder>cache</folder>
 	</files>
 	<administration>
 		<menu img="class:weblinks">KoJo - KLinks</menu>
