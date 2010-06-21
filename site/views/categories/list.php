@@ -20,7 +20,7 @@
 			<?php $class = ''; ?>
 				<span class="jitem-title">
 					<?php $title =Text::escape($item->title); ?>
-					<?php echo Route::anchor('default', array(
+					<?php echo HTML::anchor(array(
 						'action' => 'category',
 						'category' => $item->alias,
 					), Text::escape($item->title)); ?>

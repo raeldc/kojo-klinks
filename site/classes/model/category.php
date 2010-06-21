@@ -3,7 +3,7 @@
 /**
 * 
 */
-class Model_Category extends Jelly_Model
+class ComKLinks_Model_Category extends Jelly_Model
 {
 	public static function initialize(Jelly_Meta $meta)
 	{

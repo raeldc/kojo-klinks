@@ -3,7 +3,7 @@
 /**
 * 
 */
-class Model_Builder_Link extends Jelly_Builder
+class ComKLinks_Model_Builder_Link extends Jelly_Builder
 {
 	public function unique_key($value='')
 	{

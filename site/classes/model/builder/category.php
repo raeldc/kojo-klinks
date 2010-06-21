@@ -3,7 +3,7 @@
 /**
 * 
 */
-class Model_Builder_Category extends Jelly_Builder
+class ComKLinks_Model_Builder_Category extends Jelly_Builder
 {
 	public function __construct($model = NULL, $type = NULL)
 	{

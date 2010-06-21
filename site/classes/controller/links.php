@@ -1,11 +1,12 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Controller_Links extends Controller {
+class ComKLinks_Controller_Links extends Controller {
 
 	public function action_categories()
 	{
+		// Get the category model
 		$categories = Jelly::select('category');
-		
+
 		/*
 		 * If the route is something like this: categories/alias-of-category/2, 
 		 *	 then we know that we're accessing the children of "alias-of-category" but display is limited to 2 levels only
@@ -13,15 +14,12 @@ class Controller_Links extends Controller {
 		$category = $this->request->param('category', NULL);
 		$category = Jelly::select('category', $category);
 		$limit = $this->request->param('limit', $this->params->get('maxLevel', -1));
-		$internal = FALSE;
-		
+
 		if ($category->loaded()) 
 		{
 			// Get the children of the category
 			$categories->where('parent_id', '=', $category->id);
-			
-			// If a category is passed, I think this method is being accessed internally through HMVC
-			$internal = TRUE;
+
 		}else{
 			// Just get all the 1st Level Categories
 			$categories->where('level', '=', 1);
@@ -33,14 +31,14 @@ class Controller_Links extends Controller {
 				->set('limit', $limit)
 				->set('level', 1)
 				->render();
-				
-		// If this is an internal call, then we don't need to display the template which displays the headings
-		if ($internal) 
+
+		// If this is an internal HMVC call, then we don't need to display the template which displays the headings
+		if (Request::instance() !== Request::current()) 
 		{
 			$this->request->response = $items;
 			return;
 		}
-				
+
 		// Combine the 2 views, this view loads the Title and Description, then inserts the previous view "items" above
 		$this->request->response = View::factory('categories/template')
 			->set('items', $items)
@@ -86,19 +84,19 @@ class Controller_Links extends Controller {
 			
 			// Check if the category has children
 			if ($category->children->count()) 
-			{
-				// The Route we're passing in the Request::factory is trying to get the children of the current category
-				$route = Route::get('categories')->uri(array(
-						'category' => $category->alias,
-						'limit' => 1,
-					));
-				
+			{	
 				/*
 				 * Example HMVC Call
 				 * 		One of the greatest features of Kohana is HMVC
 				 *		I can reuse a controller method and get its output!
 				 */
-				$subcategories = Request::factory($route)->execute()->response;
+				$subcategories = Request::factory(array(
+						'option' => 'com_klinks',
+						'controller' => 'links',
+						'action' => 'categories',
+						'category' => $category->alias,
+						'limit' => 1,
+					))->execute()->response;
 			}
 			
 			$this->request->response = View::factory('category/template')

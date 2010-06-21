@@ -21,13 +21,11 @@
 				<?php
 					// Compute the correct link
 					$menuclass = 'category'.$params->get('pageclass_sfx');
-					$url = HTML::uri(
-						Route::get('default')->uri(array(
+					$url = HTML::uri(array(
 							'action' => 'category',
 							'category' => $link->parent->alias,
 							'link' => $link->alias,
-						))
-					);
+						));
 					$target = ($link->params->target) ? $link->params->target : $params->get('target');
 					switch ($target)
 					{
